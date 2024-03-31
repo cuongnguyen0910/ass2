@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Form</title>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<form id="orderForm">
+    <label>Delivery or Pickup:</label><br>
+    <input type="radio" id="delivery" name="deliveryPickup" value="delivery" checked>
+    <label for="delivery">Delivery</label><br>
+    <input type="radio" id="pickup" name="deliveryPickup" value="pickup">
+    <label for="pickup">Pickup</label><br>
+
+    <div id="deliveryAddressSection">
+        <label for="deliveryAddress">Delivery Address:</label><br>
+        <textarea id="deliveryAddress" name="deliveryAddress" rows="4" cols="50"></textarea><br>
+    </div>
+
+    <label for="billingAddress">Billing Address:</label><br>
+    <textarea id="billingAddress" name="billingAddress" rows="4" cols="50"></textarea><br>
+
+    <label for="contactNumber">Contact Number:</label><br>
+    <input type="text" id="contactNumber" name="contactNumber"><br>
+
+    <label for="email">Email for Receipt:</label><br>
+    <input type="email" id="email" name="email"><br>
+
+    <label>Pay On Pickup or Online:</label><br>
+    <input type="radio" id="payPickup" name="payOption" value="pickup" checked>
+    <label for="payPickup">Pay on Pickup</label><br>
+    <input type="radio" id="payOnline" name="payOption" value="online">
+    <label for="payOnline">Pay Online</label><br>
+
+    <div id="creditCardSection" class="hidden">
+        <label for="creditCardNumber">Credit Card Number:</label><br>
+        <input type="text" id="creditCardNumber" name="creditCardNumber"><br>
+    </div>
+
+    <button type="button" onclick="submitOrder()">Place Order</button>
+</form>
+
+<script>
+document.getElementById('delivery').addEventListener('change', function() {
+    var deliveryAddressSection = document.getElementById('deliveryAddressSection');
+    if (this.checked) {
+        deliveryAddressSection.classList.remove('hidden');
+    } else {
+        deliveryAddressSection.classList.add('hidden');
+    }
+});
+
+document.getElementById('payOnline').addEventListener('change', function() {
+    var creditCardSection = document.getElementById('creditCardSection');
+    if (this.checked) {
+        creditCardSection.classList.remove('hidden');
+    } else {
+        creditCardSection.classList.add('hidden');
+    }
+});
+</script>
+
+</body>
+</html>
